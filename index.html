@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United States GDP</title>
+</head>
+<body>
+    <div class="main">
+        <h1 id="title">United States GDP</h1>
+        <div id="wrapper">
+        </div>
+    </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" ></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="./chart.js">
+        //fetch("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json")
+        //    .then(data => data.json())
+        //    .then(jsonResponse => {
+        //        const {data} = jsonResponse
+        //        d3function(data)
+        //    })
+        //function d3function(data){
+        //    const DATASET = data.map(day => day[1]);
+        //    console.log(DATASET)
+        //    const WIDTH_SVG = 1200
+        //    const HEIGHT_SVG = 400
+        //    const BAR_PADDING = 0;
+        //    const WIDTH_BAR = (WIDTH_SVG - (DATASET.length * BAR_PADDING)) / DATASET.length;
+        //    const svg = d3.select("svg")
+        //                    .attr("height",HEIGHT_SVG)
+        //                    .attr("width",WIDTH_SVG);
+        //    
+        //    
+        //    //scale 
+        //    
+        //    const xScale = d3.scaleLinear()
+        //                 .domain([0, WIDTH_BAR * DATASET.length])
+        //                 .range([0, WIDTH_SVG - 50]);
+        //    
+        //    const yScale = d3.scaleLinear()
+        //                 .domain([0, d3.max(DATASET)])
+        //                 .range([HEIGHT_SVG-20, 20]);
+        //    //
+            
+        //    //axis
+//
+          //  const xAxis = d3.axisBottom(xScale);
+        //    const yAxis = d3.axisLeft(yScale).ticks(20, "s");;
+
+        //    svg.append("g")
+        //        .attr("transform", `translate(50,  ${(HEIGHT_SVG) - 20})`)
+        //        .attr("id","x-axis")
+        //        .call(xAxis);
+        //    svg.append("g")
+        //        .attr("transform", "translate(50, 0)")
+        //        .attr("id","y-axis")
+        //        .call(yAxis)
+        //    //enter rects
+        //    svg.selectAll('rect')
+        //        .data(data)
+        //        .enter()
+        //        .append("rect")
+        //        .attr("width",WIDTH_BAR)
+        //        .attr("height",(d)=>yScale(d[1]))
+        //        .attr("x", (d,i)=>50 + i*xScale(WIDTH_BAR + BAR_PADDING))
+        //        .attr("y", (d,i)=> HEIGHT_SVG -  d[1])
+        //        .attr('fill','orange')
+        //        .attr("class","bar")
+        //        .attr("data-date",(d)=>d[0])
+        //        .attr("data-gdp",(d)=>d[1]);
+        //    
+        //    //enter tooltip 
+        //    
+        //    //svg.selectAll('text')
+        //    //    .data(DATASET)
+        //    //    .enter()
+        //    //    .append('text')
+        //    //    .text((d)=>d)
+        //    //    .attr('x', (d,i)=> i*(WIDTH_BAR + BAR_PADDING))
+        //    //    .attr('y', (d,i)=> HEIGHT_SVG - yScale(d)  )
+        //    //    .attr('id',"tooltip")
+        //}
+    </script>
+</body>
+</html>
