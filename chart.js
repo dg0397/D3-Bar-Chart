@@ -17,12 +17,12 @@ async function drawBarChart(){
     //2) Create Chart Dimensions
 
     let dimensions = {
-        width: window.innerWidth * 0.9,
+        width: window.innerWidth * 0.5,
         height: 400,
         margin: {
-            top: 15,
-            right: 15,
-            bottom: 60,
+            top: 30,
+            right: 30,
+            bottom: 30,
             left: 60,
         },
     }
@@ -72,6 +72,7 @@ async function drawBarChart(){
     const barWidth = dimensions.boundedWidth/dataset.length
 
     const barsRect = barGroup.append('rect')
+                                .transition()
                                 .attr("x", d => xScale(xAccessor(d)))
                                 .attr("y", d => yScale(yAccessor(d)))
                                 .attr("width",barWidth )

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(260deg, #2376ae 0%, darkslategrey 100%);
+    padding: 1rem;
+}
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 1rem auto;
+    border-radius: 50px ;
+}
+svg{
+    background-color: rgb(247, 247, 247);
+    border-radius: 20px;
+    box-shadow: 5px 10px 10px #1c1c1c;
+}
+h1{
+    font-style: monospace;
+    font-style: italic;
+    text-align: center;
+    color: white;
+}
