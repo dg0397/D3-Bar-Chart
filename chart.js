@@ -1,6 +1,6 @@
 async function drawBarChart(){
     //1)Acces Data
-
+    console.log(d3)
     //Fetching data
 
     const {data : dataset} = await d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json")
@@ -64,6 +64,13 @@ async function drawBarChart(){
 
     //5) Draw Data
 
+    const tooltip = d3.select('body')
+                    .append('div')
+                    .attr('id', 'tooltip')
+                    .style('visibility', 'hidden')
+                    .style('width', 'auto')
+                    .style('height', 'auto')
+
     const barGroup = bounds.selectAll('g')
                             .data(dataset)
                             .enter()
@@ -81,12 +88,23 @@ async function drawBarChart(){
                                 .attr("data-date", d => d[0])
                                 .attr("data-gdp", d => yAccessor(d))
                                 .attr("fill", "cornflowerblue")
+   
+    d3.selectAll('rect').on('mouseover', function(datum,index,nodes){
+        
+        tooltip.transition()
+            .style('visibility', 'visible')
+        tooltip.text(index[0])
+        document.querySelector('#tooltip').setAttribute('data-date', index[0])
+    }).on('mouseout', (item) => {
+        tooltip.transition()
+            .style('visibility', 'hidden')
+    })  
 
     
-    const titlesRect = barGroup.append('title')
-                                .attr('id',"tooltip")
-                                .attr("data-date", d => d[0])
-                                .text(d => d[0])
+    //const titlesRect = barGroup.append('title')
+    //                            .attr('id',"tooltip")
+    //                            .attr("data-date", d => d[0])
+    //                            .text(d => d[0])
     //Draw Peripherals
 
     //Setting axis 
