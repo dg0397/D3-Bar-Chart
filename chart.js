@@ -17,7 +17,7 @@ async function drawBarChart(){
     //2) Create Chart Dimensions
 
     let dimensions = {
-        width: window.innerWidth * 0.5,
+        width: window.innerWidth * 0.9 <= 600 ? window.innerWidth * 0.9 : 800,
         height: 400,
         margin: {
             top: 30,
