@@ -64,48 +64,36 @@ async function drawBarChart(){
 
     //5) Draw Data
 
-    const tooltip = d3.select('body')
+    const updateTransition = d3.transition().duration(1000);
+
+    const tooltip = d3.select('.main')
                     .append('div')
                     .attr('id', 'tooltip')
                     .style('visibility', 'hidden')
-                    .style('width', 'auto')
-                    .style('height', 'auto')
-
-    const barGroup = bounds.selectAll('g')
-                            .data(dataset)
-                            .enter()
-                            .append('g')
-
+                    
     const barWidth = dimensions.boundedWidth/dataset.length
 
-    const barsRect = barGroup.append('rect')
-                                .transition()
-                                .attr("x", d => xScale(xAccessor(d)))
-                                .attr("y", d => yScale(yAccessor(d)))
-                                .attr("width",barWidth )
-                                .attr('height', d =>dimensions.boundedHeight - yScale(yAccessor(d)))
-                                .attr("class", "bar")
-                                .attr("data-date", d => d[0])
-                                .attr("data-gdp", d => yAccessor(d))
-                                .attr("fill", "cornflowerblue")
-   
-    d3.selectAll('rect').on('mouseover', function(datum,index,nodes){
-        
-        tooltip.transition()
-            .style('visibility', 'visible')
-        tooltip.text(index[0])
-        document.querySelector('#tooltip').setAttribute('data-date', index[0])
-    }).on('mouseout', (item) => {
-        tooltip.transition()
-            .style('visibility', 'hidden')
-    })  
+    const barRects = bounds.selectAll('rect')
+                            .data(dataset)
+                            .enter()
+                            .append('rect')
+                            .attr("x", d => xScale(xAccessor(d)))
+                            .attr("y", dimensions.boundedHeight)
+                            .attr("width",barWidth )
+                            .attr('height', 0)
+                            .attr("class", "bar")
+                            .attr("data-date", d => d[0])
+                            .attr("data-gdp", d => yAccessor(d))
+                            .style("fill", "yellowgreen")
+                            .style("opacity","1");
 
+    barRects.transition(updateTransition)
+            .attr("y", d => yScale(yAccessor(d)))
+            .attr('height', d =>dimensions.boundedHeight - yScale(yAccessor(d)))
+            .style("fill", "cornflowerblue")
+                        
     
-    //const titlesRect = barGroup.append('title')
-    //                            .attr('id',"tooltip")
-    //                            .attr("data-date", d => d[0])
-    //                            .text(d => d[0])
-    //Draw Peripherals
+    //6)Draw Peripherals
 
     //Setting axis 
 
@@ -125,6 +113,22 @@ async function drawBarChart(){
     const yAxis = bounds.append('g')
                         .attr("id","y-axis")
                         .call(yAxisGenerator);
+
+    //7)Set up interactions
+
+    //Adding tooltip interactions with rects
+
+    barRects.on('mouseenter', function(datum,index,nodes){
+            d3.select(this).style('fill','rgba(100 ,149 ,237 ,.5)')
+            tooltip
+            .style('visibility', 'visible')
+            .text(`${index[0]} --- $${index[0]} Billion`)
+            .attr('data-date', index[0])
+    }).on('mouseout', function(datum,index,nodes){
+            d3.select(this).style("fill", "cornflowerblue")
+            tooltip
+            .style('visibility', 'hidden')
+    }) 
 }
 
 drawBarChart()

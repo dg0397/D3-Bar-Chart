@@ -2,10 +2,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 body{
     background-image: linear-gradient(260deg, #2376ae 0%, darkslategrey 100%);
     padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #wrapper{
     display: flex;
@@ -26,4 +35,17 @@ h1{
     font-style: italic;
     text-align: center;
     color: white;
+}
+#tooltip{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    background-color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding: .5rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #1c1c1c;
 }
