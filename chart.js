@@ -122,7 +122,7 @@ async function drawBarChart(){
             d3.select(this).style('fill','rgba(100 ,149 ,237 ,.5)')
             tooltip
             .style('visibility', 'visible')
-            .text(`${index[0]} --- $${index[0]} Billion`)
+            .text(`${index[0]} --- $${index[1]} Billion`)
             .attr('data-date', index[0])
     }).on('mouseout', function(datum,index,nodes){
             d3.select(this).style("fill", "cornflowerblue")
