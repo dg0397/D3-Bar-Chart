@@ -66,10 +66,7 @@ async function drawBarChart(){
 
     const updateTransition = d3.transition().duration(1000);
 
-    const tooltip = d3.select('.main')
-                    .append('div')
-                    .attr('id', 'tooltip')
-                    .style('visibility', 'hidden')
+    const tooltip = d3.select('#tooltip');
                     
     const barWidth = dimensions.boundedWidth/dataset.length
 
@@ -119,16 +116,19 @@ async function drawBarChart(){
     //Adding tooltip interactions with rects
 
     barRects.on('mouseenter', function(datum,index,nodes){
-            d3.select(this).style('fill','rgba(100 ,149 ,237 ,.5)')
             tooltip
-            .style('visibility', 'visible')
-            .text(`${index[0]} --- $${index[1]} Billion`)
-            .attr('data-date', index[0])
+            .style('display', 'flex')
+            .attr('data-date', index[0]);
+            
+            tooltip.select('#data-date')
+                    .text(`${index[0]}`)
+            tooltip.select('#gdp')
+                    .text(`$${index[1]} Billion`)
     }).on('mouseout', function(datum,index,nodes){
-            d3.select(this).style("fill", "cornflowerblue")
             tooltip
-            .style('visibility', 'hidden')
-    }) 
+            .style('display', 'none')
+    });
+
 }
 
 drawBarChart()

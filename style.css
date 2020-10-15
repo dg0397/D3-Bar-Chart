@@ -30,6 +30,9 @@ svg{
     border-radius: 20px;
     box-shadow: 5px 10px 10px #1c1c1c;
 }
+svg .bar:hover{
+    fill: rgba(100 ,149 ,237 ,.5) !important
+}
 header h1{
     font-style: italic;
     font-weight: 300;
@@ -39,6 +42,7 @@ header h1{
 }
 #tooltip{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: auto;
@@ -46,9 +50,11 @@ header h1{
     background-color: white;
     text-align: center;
     font-size: 2rem;
-    padding: .5rem;
+    padding: 1rem;
     border-radius: 10px;
     box-shadow: 5px 5px 10px #1c1c1c;
+    display: none;
+    transition: all .5s ease ;
 }
 
 footer{
