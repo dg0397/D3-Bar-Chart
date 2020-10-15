@@ -116,15 +116,18 @@ async function drawBarChart(){
     //Adding tooltip interactions with rects
 
     barRects.on('mouseenter', function(datum,index,nodes){
+            //updating tooltip style
             tooltip
             .style('display', 'flex')
             .attr('data-date', index[0]);
-            
+
+            //setting tooltip span element text
             tooltip.select('#data-date')
                     .text(`${index[0]}`)
             tooltip.select('#gdp')
                     .text(`$${index[1]} Billion`)
     }).on('mouseout', function(datum,index,nodes){
+            //updating tooltip style
             tooltip
             .style('display', 'none')
     });
